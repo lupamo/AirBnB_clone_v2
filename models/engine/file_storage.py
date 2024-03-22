@@ -8,22 +8,27 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
+    
     def all(self, cls=None):
-        """Returns a dictionary of models currently in storage
-        Returns:
-            A dictionary containing objects of the specified class, or all objects if cls is None
         """
+        Returns a dictionary of models currently in storage filtered by the given class.
+
+        Args:
+        cls (class, optional): The class to filter the objects. Defaults to None.
+        
+        Returns:
+        dict: A dictionary containing objects of the specified class, or all objects if cls is None.
+        """
+
         dic = {}
         if cls:
-            dictionary = self.__objects
-            for key in dictionary:
-                partition = key.replace('.', ' ')
-                partition = shlex.split(partition)
-                if (partition[0] == cls.__name__):
-                    dic[key] = self.__objects[key]
-                    return (dic)
-                else:
-                    return self.__objects
+            for key, obj in self.__objects.items():
+                if isinstance(obj, cls):
+                    dic[key] = obj
+                    return dic
+        else:
+            return self.__objects
+
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
