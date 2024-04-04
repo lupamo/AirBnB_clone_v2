@@ -29,7 +29,7 @@ sudo ln -s -f /data/web_static/releases/test/ /data/web_static/current
 #changing ownership of /data/
 sudo chown -R ubuntu:ubuntu /data/
 
-#upddate nginx configuration to serve content from /data/web_static/current
+#upddate nginx configuration to serve content from /data/web_static/current file
 if ! sudo grep -q "alias /data/web_static/current/;" /etc/nginx/sites-enabled/default; then
     sudo sed -i "\#server_name _;#a \\
         location /hbnb_static { \\
