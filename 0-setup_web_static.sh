@@ -24,7 +24,7 @@ sudo echo "<html>
 </html>" | sudo tee /data/web_static/releases/test/index.html
 
 #create or upadate the symbolic link
-sudo ln -s -f /data/web_static/releases/test/ /data/web_static/current
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 #changing ownership of /data/
 sudo chown -R ubuntu:ubuntu /data/
@@ -39,4 +39,4 @@ if ! sudo grep -q "alias /data/web_static/current/;" /etc/nginx/sites-enabled/de
 fi
 
 # restart it
-sudo systemctl restart nginx
+service nginx restart
