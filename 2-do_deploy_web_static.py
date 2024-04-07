@@ -6,18 +6,20 @@ using the function do_deploy
 
 from datetime import datetime
 import os
-from fabric import *
+from fabric.api import env
+from fabric.api import put
+from fabric.api import run
 
 
 """web-01, web-02 IPs"""
 env.hosts = ['100.25.190.224', '54.146.86.109']
 
 
-def do_deploy(archivePath):
+def do_deploy(archive_path):
     """
     deploys archive files to the webservers
     """
-    if not os.path.exists(archivePath):
+    if not os.path.exists(archive_path):
         return False
     fn = archivePath.split('/')[-1]
     comp_file = '/data/web_static/releases/' + "{}".format(fn.split('.')[0])
