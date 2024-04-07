@@ -39,5 +39,4 @@ if ! sudo grep -q "alias /data/web_static/current/;" /etc/nginx/sites-enabled/de
 fi
 
 # restart it
-sudo nginx -t
 sudo systemctl restart nginx
