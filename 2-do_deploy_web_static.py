@@ -12,7 +12,7 @@ from fabric.api import run
 
 
 """web-01, web-02 IPs"""
-env.hosts = ['100.25.190.224', '54.146.86.109']
+env.hosts = ['54.158.200.125', '54.146.86.109']
 
 
 def do_deploy(archive_path):
