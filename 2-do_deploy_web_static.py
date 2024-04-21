@@ -21,13 +21,13 @@ def do_deploy(archive_path):
     """
     if not os.path.exists(archive_path):
         return False
-    fn = archivePath.split('/')[-1]
+    fn = archive_path.split('/')[-1]
     comp_file = '/data/web_static/releases/' + "{}".format(fn.split('.')[0])
     tmp = "/tmp/" + fn
 
     try:
         """uploading archive file to tmp folder on server"""
-        put(archivePath, "/tmp/")
+        put(archive_path, "/tmp/")
         """
         uncompress the file to the
         /data/web_static/releases on the server
